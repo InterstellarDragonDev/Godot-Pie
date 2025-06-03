@@ -1,0 +1,63 @@
+# Trigger the job whenever a tag pushed
+name: Release
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  GodotPie:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    strategy:
+      matrix:
+        config:
+          - name: GodotPie-Linux64-${{ github.ref_name }}
+            platform: "Linux x86_64"
+          - name: GodotPie-Linux32-${{ github.ref_name }}
+            platform: "Linux x86_32"
+          - name: GodotPie-Arm64-${{ github.ref_name }}
+            platform: "Linux arm64"
+          - name: GodotPie-Arm32-${{ github.ref_name }}
+            platform: "Linux arm32"
+          - name: GodotPie-Windows-${{ github.ref_name }}
+            platform: "Windows Desktop"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Export GodotPie
+        id: export
+        uses: firebelley/godot-export@v7.0.0
+        with:
+          # Godot executable download URL
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_linux.x86_64.zip
+          # Godot export templates download URL
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_export_templates.tpz
+          # Relative project path
+          relative_project_path: ./pie-menus
+          # Relative export path
+          relative_export_path: ./pie-menus
+          # Export preset
+          presets_to_export: ${{ matrix.config.platform }}
+          # Enable caching
+          cache: true
+          # Enable verbose mode
+          verbose: true
+          # Archive output
+          archive_output: true
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1.18.0
+        with:
+          # GitHub token
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Generate release notes
+          generateReleaseNotes: true
+          # Tag name
+          tag: ${{ github.ref_name }}
+          # Artifact path
+          artifacts: ${{ steps.export.outputs.archive_directory }}/*
