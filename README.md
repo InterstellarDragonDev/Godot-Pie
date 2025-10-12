@@ -8,8 +8,9 @@ A simple Pie Menu made in godot
 
 
 https://github.com/user-attachments/assets/41b7d013-694e-46ae-be28-caaab0fcdc13
--*please note that the blur effect is not part of GodotPie but is an effect caused by my Window Manager. The menu actually fully transparent.
--*No icons shown here are included.
+
+please note that the blur effect is not part of GodotPie but is an effect caused by my Window Manager. The menu actually fully transparent.
+No icons shown here are included.
 
 
 # How to install
