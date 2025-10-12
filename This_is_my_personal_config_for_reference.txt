@@ -8,7 +8,7 @@ dynamic_movement=true
 clip_circle=false
 centre_pointer=false
 centre_icon="res://icon.svg"
-run_method="godot"
+run_method="daemon"
 
 [Line_Settings]
 
@@ -20,36 +20,36 @@ colour=Color(1, 1, 1, 0.5)
 
 Name="Graphics/Gaming"
 Type="sub-menu"
-IconPath="/home/your_username/.config/godot-pie/icons/art.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/art.png"
 rotation=0.3
 
 [Submenu 2]
 
 Name="Personal"
 Type="sub-menu"
-IconPath="/home/your_username/.config/godot-pie/icons/social.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/social.png"
 rotation=3.12
 
 [Submenu 3]
 
 Name="Dev"
 Type="sub-menu"
-IconPath="/home/your_username/.config/godot-pie/icons/dev.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/dev.png"
 rotation=0.3
 
 [Button 1]
 
 Name="Blender"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/blender.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/blender.png"
 parent="Graphics/Gaming"
-Command="/home/your_username/Applications/blender-4.4.3/blender"
+Command="/home/username_redacted/Applications/blender-4.4.3/blender"
 
 [Button 2]
 
 Name="Vesktop"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/discord.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/discord.png"
 parent="Personal"
 Command="vesktop"
 
@@ -57,7 +57,7 @@ Command="vesktop"
 
 Name="Firefox"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/firefox.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/firefox.png"
 parent="root"
 Command="firefox"
 
@@ -65,15 +65,15 @@ Command="firefox"
 
 Name="Godot 4"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/godot.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/godot.png"
 parent="Dev"
-Command="/home/your_username/Applications/Godot/Godot_v4.4.x86_64"
+Command="/home/username_redacted/Applications/Godot/Godot_v4.4.x86_64"
 
 [Button 5]
 
 Name="Lutris"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/lutris.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/lutris.png"
 parent="Graphics/Gaming"
 Command="lutris"
 
@@ -81,7 +81,7 @@ Command="lutris"
 
 Name="Thunar"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/thunar.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/thunar.png"
 parent="root"
 Command="thunar"
 
@@ -89,7 +89,7 @@ Command="thunar"
 
 Name="Vivaldi"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/vivaldi.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/vivaldi.png"
 parent="Personal"
 Command="vivaldi"
 
@@ -97,7 +97,7 @@ Command="vivaldi"
 
 Name="Krita"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/krita.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/krita.png"
 parent="Graphics/Gaming"
 Command="krita"
 
@@ -105,7 +105,7 @@ Command="krita"
 
 Name="Davinci Resolve"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/davinci-resolve.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/davinci-resolve.png"
 parent="Graphics/Gaming"
 Command="/opt/resolve/bin/resolve %u"
 
@@ -113,7 +113,7 @@ Command="/opt/resolve/bin/resolve %u"
 
 Name="Steam"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/steam.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/steam.png"
 parent="Graphics/Gaming"
 Command="steam"
 
@@ -121,15 +121,15 @@ Command="steam"
 
 Name="VS Code"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/vscode.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/vscode.png"
 parent="Dev"
-Command="/home/your_username/Applications/VS-Code/bin/code"
+Command="/home/username_redacted/Applications/VS-Code/bin/code"
 
 [Button 12]
 
 Name="Whatsapp"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/whatsapp.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/whatsapp.png"
 parent="Personal"
 Command="firefox --new-tab web.whatsapp.com"
 
@@ -137,7 +137,7 @@ Command="firefox --new-tab web.whatsapp.com"
 
 Name="Kate"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/kate.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/kate.png"
 parent="Dev"
 Command="kate"
 
@@ -145,7 +145,7 @@ Command="kate"
 
 Name="Virtual Box"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/virtualbox.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/virtualbox.png"
 parent="Dev"
 Command="virtualbox"
 
@@ -153,7 +153,7 @@ Command="virtualbox"
 
 Name="Arduino IDE"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/arduino.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/arduino.png"
 parent="Dev"
 Command="arduino-ide"
 
@@ -161,7 +161,7 @@ Command="arduino-ide"
 
 Name="Qbittorrent"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/qbittorrent.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/qbittorrent.png"
 parent="Personal"
 Command="qbittorent"
 
@@ -169,7 +169,7 @@ Command="qbittorent"
 
 Name="OBS"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/obs.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/obs.png"
 parent="Personal"
 Command="obs"
 
@@ -177,158 +177,6 @@ Command="obs"
 
 Name="Sayonara"
 Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/sayonara.png"
+IconPath="/home/username_redacted/.config/godot-pie/icons/sayonara.png"
 parent="Personal"
-Command="/home/your_username/Applications/sayonara.AppImage"
-
-
-[Submenu 3]
-
-Name="Dev"
-Type="sub-menu"
-IconPath="/home/your_username/.config/godot-pie/icons/dev.png"
-rotation=0.3
-
-[Button 1]
-
-Name="Blender"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/blender.png"
-parent="Graphics/Gaming"
-Command="/home/your_username/Applications/blender-4.4.3/blender"
-
-[Button 2]
-
-Name="Vesktop"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/discord.png"
-parent="Personal"
-Command="vesktop"
-
-[Button 3]
-
-Name="Firefox"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/firefox.png"
-parent="root"
-Command="firefox"
-
-[Button 4]
-
-Name="Godot 4"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/godot.png"
-parent="Dev"
-Command="/home/your_username/Applications/Godot/Godot_v4.4.x86_64"
-
-[Button 5]
-
-Name="Lutris"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/lutris.png"
-parent="Graphics/Gaming"
-Command="lutris"
-
-[Button 6]
-
-Name="Thunar"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/thunar.png"
-parent="root"
-Command="thunar"
-
-[Button 7]
-
-Name="Vivaldi"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/vivaldi.png"
-parent="Personal"
-Command="vivaldi"
-
-[Button 8]
-
-Name="Krita"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/krita.png"
-parent="Graphics/Gaming"
-Command="krita"
-
-[Button 9]
-
-Name="Davinci Resolve"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/davinci-resolve.png"
-parent="Graphics/Gaming"
-Command="/opt/resolve/bin/resolve %u"
-
-[Button 10]
-
-Name="Steam"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/steam.png"
-parent="Graphics/Gaming"
-Command="steam"
-
-[Button 11]
-
-Name="VS Code"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/vscode.png"
-parent="Dev"
-Command="/home/your_username/Applications/VS-Code/bin/code"
-
-[Button 12]
-
-Name="Whatsapp"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/whatsapp.png"
-parent="Personal"
-Command="firefox --new-tab web.whatsapp.com"
-
-[Button 13]
-
-Name="Kate"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/kate.png"
-parent="Dev"
-Command="kate"
-
-[Button 14]
-
-Name="Virtual Box"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/virtualbox.png"
-parent="Dev"
-Command="virtualbox"
-
-[Button 15]
-
-Name="Arduino IDE"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/arduino.png"
-parent="Dev"
-Command="arduino-ide"
-
-[Button 16]
-
-Name="Qbittorrent"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/qbittorrent.png"
-parent="Personal"
-Command="qbittorent"
-
-[Button 17]
-
-Name="OBS"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/obs.png"
-parent="Personal"
-Command="obs"
-
-[Button 18]
-
-Name="Sayonara"
-Type="item"
-IconPath="/home/your_username/.config/godot-pie/icons/sayonara.png"
-parent="Personal"
-Command="/home/your_username/Applications/sayonara.AppImage"
+Command="/home/username_redacted/Applications/sayonara.AppImage"
