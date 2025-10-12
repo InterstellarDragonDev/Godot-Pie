@@ -67,7 +67,8 @@ func _anim_finished(anim_name : StringName):
 func button_down():
 	ANIM.queue("click")
 func _button_up():
-	released()
+	#released()
+	pass
 	
 
 func released():
