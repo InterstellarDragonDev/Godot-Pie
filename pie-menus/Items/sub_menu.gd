@@ -46,7 +46,7 @@ func _ready():
 	
 	BUTTON.mouse_entered.connect(_mouse_entered)
 	BUTTON.mouse_exited.connect(_mouse_exited)
-	BUTTON.button_down.connect(_button_down)
+	BUTTON.button_down.connect(button_down)
 	BUTTON.button_up.connect(_button_up)
 	
 	spawn_side_pane_icons()
@@ -82,7 +82,7 @@ func _mouse_exited() -> void:
 	change_speed_mode.emit()
 
 
-func _button_down():
+func button_down():
 	ANIM.queue("click")
 func _button_up():
 	released()

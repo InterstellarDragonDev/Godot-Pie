@@ -39,7 +39,7 @@ var settings = {
 	"clip_circle" : false,
 	"centre_pointer" : false,
 	"centre_icon" : "res://icon.svg",
-	"run_method" : "default"
+	"run_method" : "godot"
 	}
 
 # for fancy movement
@@ -307,7 +307,7 @@ func _ready():
 		load_config()
 	max_dist = settings["radius"] * 2
 	
-	if settings["run_method"] not in ["default", "daemon", "legacy"]:
+	if settings["run_method"] not in ["godot", "daemon"]:
 		$ErrorLabel.text += "\n" +  "'" + settings["run_method"] + "' is not a valid run method. Must be either 'default', 'legacy', 'daemon'."
 
 func _physics_process(delta):
@@ -329,7 +329,7 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		_on_centre_button_pressed()
 
-	if event is InputEventMouseButton and event.pressed  and event.button_index == MOUSE_BUTTON_LEFT  and speed_mode:
+	if event is InputEventMouseButton and event.is_released()  and event.button_index == MOUSE_BUTTON_LEFT:
 		var closest
 		var dist = 100000
 		for i in items:
@@ -338,17 +338,14 @@ func _input(event):
 				dist = temp
 				closest = i
 		
-		if dist < settings["radius"] / 1.3:
+		if dist < settings["radius"] / 2:
 			closest.released()
 
 func send_execute_data(data : String):
 
 	match settings["run_method"].to_lower():
-		"legacy":
-			print("used legacy system")
-			OS.execute_with_pipe(config_path + "/legacy_execute.sh", [data], false)
-			
-		"default":
+		
+		"godot":
 			print("used godot")
 			var arguements : PackedStringArray = []
 		

@@ -39,7 +39,7 @@ func _ready():
 	
 	BUTTON.mouse_entered.connect(_mouse_entered)
 	BUTTON.mouse_exited.connect(_mouse_exited)
-	BUTTON.button_down.connect(_button_down)
+	BUTTON.button_down.connect(button_down)
 	BUTTON.button_up.connect(_button_up)
 	ANIM.animation_finished.connect(_anim_finished)
 	
@@ -64,7 +64,7 @@ func _anim_finished(anim_name : StringName):
 	if anim_name == "unfocus":
 		BUTTON.disabled = false
 
-func _button_down():
+func button_down():
 	ANIM.queue("click")
 func _button_up():
 	released()
