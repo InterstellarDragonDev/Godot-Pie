@@ -62,8 +62,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           generateReleaseNotes: true
           tag: ${{ github.ref_name }}
-          artifacts: "/home/runner/work/Godot-Pie/Godot-Pie/${{ matrix.config.preset }}.zip"
+          artifacts: ./*.zip
           allowUpdates: true
+          # Disable if you don't enable discussions
           discussionCategory: General
           generateReleaseNotesPreviousTag: true
           makeLatest: legacy
