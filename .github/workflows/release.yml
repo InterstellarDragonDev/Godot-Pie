@@ -7,57 +7,65 @@ on:
       - "*"
 
 jobs:
-  GodotPie:
+  export_matrix:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     strategy:
+      fail-fast: false
       matrix:
         config:
           - name: GodotPie-Linux64-${{ github.ref_name }}
-            platform: "Linux x86_64"
+            preset: "Linux x86_64"
           - name: GodotPie-Linux32-${{ github.ref_name }}
-            platform: "Linux x86_32"
+            preset: "Linux x86_32"
           - name: GodotPie-Arm64-${{ github.ref_name }}
-            platform: "Linux arm64"
+            preset: "Linux arm64"
           - name: GodotPie-Arm32-${{ github.ref_name }}
-            platform: "Linux arm32"
+            preset: "Linux arm32"
           - name: GodotPie-Windows-${{ github.ref_name }}
-            platform: "Windows Desktop"
+            preset: "Windows Desktop"
+            needs_wine: true
 
+    name: ${{ matrix.config.name }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Export GodotPie
+      - name: Wine
+        if: matrix.config.needs_wine
+        id: wine
+        run: |
+          sudo apt update
+          sudo apt install -y wine64
+          echo "WINE_PATH=$(which wine)" >> $GITHUB_OUTPUT
+
+      - name: Export
         id: export
         uses: firebelley/godot-export@v7.0.0
         with:
-          # Godot executable download URL
           godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_linux.x86_64.zip
-          # Godot export templates download URL
           godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_export_templates.tpz
-          # Relative project path
           relative_project_path: ./pie-menus
-          # Relative export path
           relative_export_path: ./pie-menus
-          # Export preset
-          presets_to_export: ${{ matrix.config.platform }}
-          # Enable caching
+          presets_to_export: ${{ matrix.config.preset }}
+          wine_path: ${{ steps.wine.outputs.WINE_PATH }}
+          export_debug: false
           cache: true
-          # Enable verbose mode
           verbose: true
-          # Archive output
           archive_output: true
 
-      - name: Create Release
-        uses: ncipollo/release-action@v1.18.0
+      - name: Release
+        uses: ncipollo/release-action@v1.20.0
         with:
-          # GitHub token
           token: ${{ secrets.GITHUB_TOKEN }}
-          # Generate release notes
           generateReleaseNotes: true
-          # Tag name
           tag: ${{ github.ref_name }}
-          # Artifact path
-          artifacts: ${{ steps.export.outputs.archive_directory }}/*
+          artifacts: pie-menu/${{ steps.export.outputs.archive_directory }}/.zip
+          allowUpdates: true
+          discussionCategory: General
+          generateReleaseNotesPreviousTag: true
+          makeLatest: legacy
+          omitBodyDuringUpdate: true
+          omitNameDuringUpdate: true
