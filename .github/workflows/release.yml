@@ -48,7 +48,7 @@ jobs:
           godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_linux.x86_64.zip
           godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_export_templates.tpz
           relative_project_path: ./pie-menus
-          relative_export_path: ./pie-menus
+          relative_export_path: ./
           presets_to_export: ${{ matrix.config.preset }}
           wine_path: ${{ steps.wine.outputs.WINE_PATH }}
           export_debug: false
@@ -62,7 +62,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           generateReleaseNotes: true
           tag: ${{ github.ref_name }}
-          artifacts: pie-menu/${{ steps.export.outputs.archive_directory }}/.zip
+          artifacts: "/home/runner/work/Godot-Pie/Godot-Pie/${{ matrix.config.preset }}.zip"
           allowUpdates: true
           discussionCategory: General
           generateReleaseNotesPreviousTag: true
