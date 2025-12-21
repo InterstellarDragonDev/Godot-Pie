@@ -1,0 +1,72 @@
+# Trigger the job whenever a tag pushed
+name: Release
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  export_matrix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - name: GodotPie-Linux64-${{ github.ref_name }}
+            preset: "Linux x86_64"
+          - name: GodotPie-Linux32-${{ github.ref_name }}
+            preset: "Linux x86_32"
+          - name: GodotPie-Arm64-${{ github.ref_name }}
+            preset: "Linux arm64"
+          - name: GodotPie-Arm32-${{ github.ref_name }}
+            preset: "Linux arm32"
+          - name: GodotPie-Windows-${{ github.ref_name }}
+            preset: "Windows Desktop"
+            needs_wine: true
+
+    name: ${{ matrix.config.name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Wine
+        if: matrix.config.needs_wine
+        id: wine
+        run: |
+          sudo apt update
+          sudo apt install -y wine64
+          echo "WINE_PATH=$(which wine)" >> $GITHUB_OUTPUT
+
+      - name: Export
+        id: export
+        uses: firebelley/godot-export@v7.0.0
+        with:
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_export_templates.tpz
+          relative_project_path: ./pie-menus
+          relative_export_path: ./
+          presets_to_export: ${{ matrix.config.preset }}
+          wine_path: ${{ steps.wine.outputs.WINE_PATH }}
+          export_debug: false
+          cache: true
+          verbose: true
+          archive_output: true
+
+      - name: Release
+        uses: ncipollo/release-action@v1.20.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          generateReleaseNotes: true
+          tag: ${{ github.ref_name }}
+          artifacts: ./*.zip
+          allowUpdates: true
+          # Disable if you don't enable discussions
+          discussionCategory: General
+          generateReleaseNotesPreviousTag: true
+          makeLatest: legacy
+          omitBodyDuringUpdate: true
+          omitNameDuringUpdate: true
